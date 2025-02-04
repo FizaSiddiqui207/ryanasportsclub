@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ryan Sports Club</title>
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/fontawesome.min.css"
+        integrity="sha384-NvKbDTEnL+A8F/AA5Tc5kmMLSJHUO868P+lDtTpJIeQdGYaUIuLr4lVGOEA1OcMy" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        /* navbar */
+        @import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url(background\ 123.png);
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+
+        nav {
+            background: black;
+            border: 2px solid gold;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 26px;
+        }
+
+        nav a {
+            color: #ffd900;
+            text-decoration: none;
+            font-size: 1.3em;
+        }
+
+        nav a:hover {
+            color: white;
+        }
+
+        nav .logo {
+            display: flex;
+            align-items: center;
+            font-size: 30px;
+            font-weight: 600;
+            -webkit-text-stroke: 1px #ffd900;
+        }
+
+        nav .logo img {
+            width: 50px;
+            height: 50px;
+            margin-right: 15px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 6px;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li a {
+            color: #ffd700;
+            padding: 8px 12px;
+        }
+
+        nav ul li a:hover {
+            border-bottom: 2px solid #ffd700;
+            border-top: 2px solid #ffd700;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        nav ul ul {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: black;
+            list-style: none;
+            padding: 5px 0;
+            display: none;
+            border: 1px solid #ffd700;
+        }
+
+        nav ul li:hover>ul {
+            display: block;
+            top: 135%;
+        }
+
+        nav ul ul li a {
+            display: block;
+            padding: 8px 12px;
+            color: #ffd700;
+        }
+
+        nav ul ul li a:hover {
+            background: none;
+            color: white;
+        }
+
+        .toggle {
+            display: none;
+            font-size: 35px;
+            cursor: pointer;
+        }
+
+        @media screen and (max-width: 768px) {
+            nav {
+                flex-direction: column;
+            }
+
+            .menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+            }
+
+            .menu.active {
+                display: flex;
+            }
+
+            .toggle {
+                display: block;
+                position: absolute;
+                right: 20px;
+            }
+        }
+
+        /* carrom */
+        header {
+            background-color: black;
+            color: #FFD700;
+            padding: 20px 40px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        header .log h1 {
+            font-size: 36px;
+            position: relative;
+            display: inline-block;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        header .log h1::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background-color: #FFD700;
+            transition: width 0.3s ease;
+        }
+
+        header .log h1:hover {
+            transform: scale(1.1);
+            color: #fff;
+        }
+
+        header .log h1:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            box-shadow: 0 0 20px #FFD700;
+            max-width: 90%;
+            margin: 40px auto;
+        }
+
+        .hero-content {
+            flex: 1;
+            text-align: left;
+            margin-right: 20px;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            -webkit-text-stroke: 1.5px #FFD700;
+            color: #000;
+            text-align: center;
+            /* Centered text */
+        }
+
+        .hero p {
+            color: #ffd700;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            text-align: justify;
+            /* Aligning text properly */
+        }
+
+        .hero ul {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .hero ul li {
+            margin-bottom: 10px;
+        }
+
+        .hero .cta-button {
+            display: inline-block;
+            padding: 10px 20px;
+            border: 2px solid #FFD700;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+            color: #FFD700;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .hero .cta-button:hover {
+            background-color: #FFD700;
+            color: #000;
+        }
+
+        .hero img {
+            flex: 0 0 300px;
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border-radius: 10px;
+            border: 2px solid #FFD700;
+            margin-top: 20px;
+            box-shadow: 0 0 10px #FFD700;
+            transform: transfrom 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .hero img:hover {
+            transform: scale(1.0);
+            box-shadow: 0 0 15px #FFD700, 0 0 10px #FFD700;
+        }
+
+
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                /* Stack items on smaller screens */
+                padding: 40px 20px;
+            }
+
+            .hero-content {
+                margin-right: 0;
+                text-align: center;
+                /* Center text on smaller screens */
+            }
+
+            .hero img {
+                margin-top: 20px;
+            }
+        }
+
+        /* Footer */
+
+        footer {
+            font-family: 'poppins', sans-serif;
+            position: relative;
+            width: 100%;
+            height: auto;
+            padding: 50px 100px;
+            background: #111;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            flex-direction: row;
+        }
+
+        .container .sec {
+            margin-right: 30px;
+        }
+
+        .container .sec.aboutus {
+            width: 40%;
+        }
+
+        .container h2 {
+            position: relative;
+            color: #fff;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .container h2:before {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: #efbf04;
+        }
+
+        p {
+            color: #999;
+        }
+
+        .sci {
+            margin-top: 20px;
+            display: flex;
+            background-color: #111;
+        }
+
+        .sci li {
+            list-style: none;
+        }
+
+        .sci li a {
+            text-decoration: none;
+            padding: 15px;
+            background-color: white;
+            margin: 10px;
+            border-radius: 50%;
+        }
+
+        .sci li a i {
+            font-size: 1.5em;
+            color: black;
+            opacity: 1.5;
+            margin-top: 10px;
+        }
+
+        .sci li a:hover {
+            background-color: #111;
+            transition: 0.5s;
+        }
+
+        .sci li a:hover i {
+            color: #efbf04;
+        }
+
+        .quicklinks {
+            position: relative;
+            width: 25%;
+        }
+
+        .quicklinks ul li {
+            list-style: none;
+        }
+
+        .quicklinks ul li a {
+            color: #999;
+            text-decoration: none;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        .quicklinks ul li a:hover {
+            color: #efbf04;
+        }
+
+        /* Animation Effects */
+        .sec {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s forwards;
+        }
+
+        .sec:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .sec:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .sec:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .contact .info a {
+            position: relative;
+            color: #000;
+        }
+
+        .contact .info li {
+            display: flex;
+            margin-bottom: 16px;
+            color: white;
+        }
+
+        .contact .info li span {
+            color: #999;
+        }
+
+        .contact .info li a {
+            color: #999;
+            text-decoration: none;
+        }
+
+        li span i {
+            color: white;
+            margin: 8px;
+        }
+
+        li span i:hover {
+            color: #efbf04;
+        }
+
+        .copyrightText {
+            width: 100%;
+            background: #181818;
+            padding: 8px 100px;
+            text-align: center;
+        }
+
+        .copyrightText p {
+            color: white;
+        }
+
+        @media (max-width: 991px) {
+            footer {
+                padding: 40px;
+            }
+
+            .container {
+                flex-direction: column;
+            }
+
+            .container .sec {
+                margin-right: 0;
+                margin-bottom: 40px;
+            }
+
+            .container .sec.sec.aboutus,
+            .quicklinks,
+            .contact {
+                width: 100%;
+            }
+
+            .copyrightText {
+                padding: 8px 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">
+            <img src="logo.jpg" alt="logo">RYAN SPORTS CLUB
+        </div>
+        <div class="toggle">
+            <a href="#"><ion-icon name="menu-outline"></ion-icon></a>
+        </div>
+        <ul class="menu">
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="about.html">ABOUT</a></li>
+            <li>
+                <a href="#">SPORTS</a>
+                <ul>
+                    <li><a href="indoor.html">Indoor</a></li>
+                    <li><a href="out door.html">Outdoor</a></li>
+                    <li><a href="recreation.html">Recreation</a></li>
+                </ul>
+            </li>
+            <li><a href="membership.html">MEMBERSHIP</a></li>
+            <li>
+                <a href="#">OTHERS</a>
+                <ul>
+                    <li><a href="activites.html">Activities</a></li>
+                    <li><a href="complain.html">Complaints</a></li>
+                </ul>
+            </li>
+            <li><a href="#f">CONTACT US</a></li>
+        </ul>
+    </nav>
+    <!-- carrom -->
+    <header>
+        <div class="log">
+            <h1><b>Carrom</b></h1>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Carrom Rules and Timing Details</h1>
+                <p><strong>About Carrom:</strong> Carrom is a tabletop game where players flick discs to pocket them
+                    into corner pockets, aiming to score more points than the opponent.</p>
+                <p><strong>Rules:</strong></p>
+                <ul>
+                    <li>Players take turns to flick a striker to hit the discs.</li>
+                    <li>Each player aims to pocket all their assigned discs before their opponent.</li>
+                    <li>The queen must be pocketed and covered to score points.</li>
+                    <li>A foul occurs if the striker or incorrect disc is pocketed.</li>
+                    <li>The game ends when a player pockets all their discs and the queen.</li>
+                </ul>
+                <p><strong>Timings:</strong></p>
+                <ul>
+                    <li>Weekdays: 3 PM - 8 PM</li>
+                    <li>Weekends: 2 PM - 9 PM</li>
+                </ul>
+                <a href="membership.html" class="cta-button">Join Us Today</a>
+            </div>
+            <img src="Carrom.webp" alt="Carrom Board">
+        </section>
+    </main>
+    <!-- footer -->
+    <div id="f">
+        <footer>
+            <div class="container">
+                <div class="sec aboutus">
+                    <h2>About Us</h2>
+                    <p>Rayan Sports Club is a hub for sports enthusiasts, offering top tier facilities and competitive
+                        tournaments. We promote fitness, teamwork, and passion for sports, providing a dynamic
+                        environment for athletes of all levels. Join us and be part of our thriving sports community!
+                    </p>
+                    <br>
+                    <ul class="sci">
+                        <li><a href="https://web.whatsapp.com/"target="_blank"><i class="bi bi-whatsapp"></i></a></li>
+                        <li><a href="https://www.facebook.com/"target="_blank"><i class="bi bi-facebook"></i></a></li>
+                        <li><a href="https://www.instagram.com/"target="_blank"><i class="bi bi-instagram"></i></a></li>
+                        <li><a href="https://twitter.com/login?"target="_blank"><i class="bi bi-twitter-x"></i></a></li>
+                    </ul>
+                </div>
+                <div class="sec quicklinks">
+                    <h2>Quick Links</h2>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="#f">Contact Us</a></li>
+                        <li><a href="location.html"target="_blank">Location</a></li>
+                        <li><a href="membership.html">Membership</a></li>
+                    </ul>
+                </div>
+                <div class="sec contact">
+                    <h2>Contact Info</h2>
+                    <ul class="info">
+                        <a href="location.html"target="_blank">
+                            <li>
+                                <span><i class="bi bi-geo-alt"></i></span>
+                                <span>Sea View road Street <br>
+                                    DHA Phase 8, Karachi,<br>Pakistan</span>
+                            </li>
+                            <li>
+                                <span><i class="bi bi-telephone"></i></span>
+                                <p><a href="tel:314552678">+92 314 552 6788</a><br>
+                            </li>
+                            <li>
+                                <span><i class="bi bi-envelope"></i></span>
+                                <p><a href="mailto:info@rayyansportsclub.com">info@rayyansportsclub.com</a></p>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+        <div class="copyrightText">
+            <p>Copyright © 2025 Rayyan Sports Club. All Right Reserved</p>
+        </div>
+    </div>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        // navbar
+        $(function () {
+            $(".toggle").on("click", function () {
+                if ($(".menu").hasClass("active")) {
+                    $(".menu").removeClass("active");
+                    $(this).find("a").html("<ion-icon name='menu-outline'></ion-icon>");
+                } else {
+                    $(".menu").addClass("active");
+                    $(this).find("a").html("<ion-icon name='close-outline'></ion-icon>");
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
